@@ -1,4 +1,4 @@
-FROM tensorflow
+FROM tensorflow/tensorflow:0.10.0
 
 #1.-------install JDK--HADOOP--SPARK
 RUN cd /tmp && \
