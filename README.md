@@ -1,5 +1,5 @@
 # README
-This project contains Tensorflow + HADOOP + SPARK + tensoronspark,
+This project contains [Tensorflow] + HADOOP + SPARK + [tensoronspark],
  to make it easy to get up and running with `TensorFlow on Spark` via Docker.
 
 # build
@@ -81,10 +81,12 @@ start pyspark shell:
     $SPARK_HOME/bin/pyspark --master spark://${NAMENODE}:7077 --deploy-mode client
 run spark_mnist:
 
-`
-import tensorspark.example.spark_mnist as mnist
-mnist.train(sc=sc, user='root', name='spark_mnist', server_host=os.getenv('NAMENODE'), server_port=10080,\
-     sync_interval=100, batch_size=100, num_partition=2, num_epoch=2)
-`
+
+    import tensorspark.example.spark_mnist as mnist
+    mnist.train(sc=sc, user='root', name='spark_mnist', server_host=os.getenv('NAMENODE'), server_port=10080,\
+     sync_interval=100, batch_size=100, num_partition=1, num_epoch=2)
 
 
+
+[Tensorflow]: https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/docker
+[tensoronspark]: https://github.com/liangfengsid/tensoronspark
