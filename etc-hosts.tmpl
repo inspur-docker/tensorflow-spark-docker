@@ -1,0 +1,24 @@
+{{ define "host" }}
+    {{ $host := .Host }}
+    {{ $tld := .Tld }}
+    {{ if eq $tld "" }}
+        {{ range $index, $network := .Container.Networks }}
+            {{ if ne $network.IP "" }}
+{{ $network.IP }} {{ $host }}
+            {{ end }}
+        {{ end }}
+    {{ else }}
+        {{ range $index, $network := .Container.Networks }}
+            {{ if ne $network.IP "" }}
+{{ $network.IP }} {{ $host }}.{{ $tld }}
+{{ $network.IP }} {{ $host }}.{{ $network.Name }}.{{ $tld }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ $tld := or ($.Env.DOMAIN_TLD) "" }}
+{{ $workers := whereLabelValueMatches $ "dns.inspected" `true` }}
+{{ range $index, $container := $workers }}
+    {{ template "host" (dict "Container" $container "Host" $container.Hostname "Tld" $tld) }}
+{{ end }}

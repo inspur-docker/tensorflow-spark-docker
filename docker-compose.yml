@@ -1,0 +1,24 @@
+version: '2'
+#docker-compose version 1.7.1
+services:
+  tfmaster: #
+      image: tensorspark
+      hostname: tfmaster
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+      command: ["/shell/bootALL.sh","-d"]
+      environment:
+         - NAMENODE=tfmaster
+      ports:
+         - "50070:50070"
+         - "8080:8080"
+         - "8888:8888"
+         - "6060:6060"
+  tfslave1: #
+      image: tensorspark
+      hostname: tfslave1
+      volumes:
+          - /var/run/docker.sock:/var/run/docker.sock
+      command: ["/shell/bootALL.sh","-d"]
+      environment:
+         - NAMENODE=tfmaster
