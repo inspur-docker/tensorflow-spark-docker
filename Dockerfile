@@ -3,7 +3,7 @@ FROM tensorflow/tensorflow:0.10.0
 #1.-------install JDK--HADOOP--SPARK
 RUN cd /tmp && \
     curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.tar.gz" && \
-    tar xf jdk-8u60-linux-x64.tar.gz -C /opt && \ rm -f jdk-8u60-linux-x64.tar.gz && \
+    tar xf jdk-8u60-linux-x64.tar.gz -C /opt && rm -f jdk-8u60-linux-x64.tar.gz && \
     ln -s /opt/jdk* /opt/jdk
 
 # Define commonly used JAVA_HOME variable
