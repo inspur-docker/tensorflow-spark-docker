@@ -18,7 +18,7 @@ ENV HADOOP_HOME /opt/hadoop
 
 #install SPARK
 RUN cd /tmp && curl -L -O -k "http://d3kbcqa49mib13.cloudfront.net/spark-2.0.0-bin-hadoop2.7.tgz" && \
-     tar -xf spark-2.0.0-bin-hadoop2.7.tgz && rm -f spark-2.0.0-bin-hadoop2.7.tgz && \
+     tar -xf spark-2.0.0-bin-hadoop2.7.tgz -C /opt && rm -f spark-2.0.0-bin-hadoop2.7.tgz && \
      ln -s /opt/spark* /opt/spark
 ENV SPARK_HOME /opt/spark
 
